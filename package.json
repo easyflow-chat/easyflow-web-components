@@ -39,6 +39,8 @@
   },
   "devDependencies": {
     "@stencil/core": "4.7.0",
+    "@stencil-community/postcss": "2.2.0",
+    "@stencil/sass": "3.0.12",
     "@types/node": "16.18.11",
     "autoprefixer": "10.4.19",
     "eslint": "9.3.0",
@@ -50,9 +52,5 @@
     "prettier": "3.2.5",
     "typescript": "5.4.5"
   },
-  "license": "MIT",
-  "dependencies": {
-    "@stencil-community/postcss": "2.2.0",
-    "@stencil/sass": "3.0.12"
-  }
+  "license": "MIT"
 }
