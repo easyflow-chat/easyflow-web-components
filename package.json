@@ -1,6 +1,6 @@
 {
   "name": "@dragon437619/easyflow-web-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
   "collection": "dist/collection/collection-manifest.json",
