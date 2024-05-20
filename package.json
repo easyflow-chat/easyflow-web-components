@@ -1,18 +1,12 @@
 {
   "name": "@dragon437619/easyflow-web-components",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
+  "collection": "dist/collection/collection-manifest.json",
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
-  "collection": "dist/collection/collection-manifest.json",
-  "collection:main": "dist/collection/index.js",
-  "unpkg": "dist/easyflow-web-components/easyflow-web-components.esm.js",
   "exports": {
-    ".": {
-      "import": "./dist/easyflow-web-components/easyflow-web-components.esm.js",
-      "require": "./dist/easyflow-web-components/easyflow-web-components.cjs.js"
-    },
     "./loader": {
       "import": "./loader/index.js",
       "require": "./loader/index.cjs",

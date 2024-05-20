@@ -5,16 +5,13 @@ import autoprefixer from 'autoprefixer';
 
 export const config: Config = {
   namespace: 'easyflow-web-components',
-  globalStyle: 'src/components/globals/scss/global.scss',
+  validatePrimaryPackageOutputTarget: true,
+  validateTypes: true,
   outputTargets: [
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-    },
-    {
-      type: 'dist-custom-elements',
-      customElementsExportBehavior: 'auto-define-custom-elements',
-      externalRuntime: false,
+      isPrimaryPackageOutputTarget: true,
     },
     {
       type: 'docs-readme',
@@ -27,5 +24,15 @@ export const config: Config = {
   testing: {
     browserHeadless: 'new',
   },
-  plugins: [sass(), postcss({ plugins: [autoprefixer({ flexbox: 'no-2009' })] })],
+  plugins: [
+    sass({
+      injectGlobalPaths: ['src/components/globals/scss/global.scss'],
+    }),
+    postcss({
+      plugins: [autoprefixer({ flexbox: 'no-2009' })],
+    }),
+  ],
+  extras: {
+    enableImportInjection: true,
+  },
 };
