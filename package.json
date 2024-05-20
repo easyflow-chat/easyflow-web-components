@@ -1,6 +1,6 @@
 {
   "name": "@dragon437619/easyflow-web-components",
-  "version": "0.0.4-alpha",
+  "version": "0.0.5-alpha",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
   "collection": "dist/collection/collection-manifest.json",
@@ -14,7 +14,7 @@
     },
     "./loader": {
       "import": "./loader/index.js",
-      "require": "./loader/index.cjs",
+      "require": "./loader/index.cjs.js",
       "types": "./loader/index.d.ts"
     }
   },
