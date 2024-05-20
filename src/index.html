@@ -8,7 +8,12 @@
     <script type="module" src="/build/easyflow-web-components.esm.js"></script>
     <script nomodule src="/build/easyflow-web-components.js"></script>
   </head>
-  <body>
-    <my-component first="Stencil" last="'Don't call me a framework' JS"></my-component>
+  <body class="ewc--light" style="background-color: #f4f4f4;">
+      <ewc-loader size="40"></ewc-loader>
+      <ewc-button label="Primary" theme="primary"></ewc-button>
+      <ewc-button label="Secondary" theme="secondary"></ewc-button>
+      <ewc-button label="Transparent" theme="transparent"></ewc-button>
+      <ewc-button label="Loading" theme="primary" loading></ewc-button>
+      <ewc-button label="Disabled" theme="primary" disabled></ewc-button>
   </body>
 </html>

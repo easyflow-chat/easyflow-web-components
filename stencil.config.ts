@@ -1,7 +1,11 @@
+import { postcss } from '@stencil-community/postcss';
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
+import autoprefixer from 'autoprefixer';
 
 export const config: Config = {
   namespace: 'easyflow-web-components',
+  globalStyle: 'src/components/globals/scss/global.scss',
   outputTargets: [
     {
       type: 'dist',
@@ -21,6 +25,7 @@ export const config: Config = {
     },
   ],
   testing: {
-    browserHeadless: "new",
+    browserHeadless: 'new',
   },
+  plugins: [sass(), postcss({ plugins: [autoprefixer({ flexbox: 'no-2009' })] })],
 };
