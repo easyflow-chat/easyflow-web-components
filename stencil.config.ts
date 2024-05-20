@@ -7,6 +7,7 @@ export const config: Config = {
   namespace: 'easyflow-web-components',
   validatePrimaryPackageOutputTarget: true,
   validateTypes: true,
+  globalStyle: 'src/components/globals/scss/global-export.scss',
   outputTargets: [
     {
       type: 'dist',

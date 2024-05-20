@@ -31,9 +31,9 @@
     justify-content: center;
 
     &.disabled {
-      background-color: $background-disabled;
-      border-color: $background-disabled;
-      color: $font-disabled;
+      background-color: $gray-tint-2;
+      border-color: $gray-tint-2;
+      color: $gray;
     }
   }
 }
@@ -67,53 +67,53 @@
 }
 
 .primary.ewc--light {
-  background-color: $background-dark;
-  border-color: $background-dark;
-  color: $font-dark;
+  background-color: $dark;
+  border-color: $dark;
+  color: $light-violett;
 
   &:hover {
-    background-color: $background-light;
-    color: $font-light;
+    background-color: $light;
+    color: $violett;
   }
 }
 
 .primary.ewc--dark {
-  background-color: $background-light;
-  border-color: $background-light;
-  color: $font-light;
+  background-color: $light;
+  border-color: $light;
+  color: $violett;
 
   &:hover {
-    background-color: $background-dark;
-    color: $font-dark;
+    background-color: $dark;
+    color: $light-violett;
   }
 }
 
 .secondary.ewc--light {
-  background-color: $background-light;
-  border-color: $font-light;
-  color: $font-light;
+  background-color: $light;
+  border-color: $violett;
+  color: $violett;
 
   &:hover {
-    background-color: $background-dark;
-    color: $font-dark;
+    background-color: $dark;
+    color: $light-violett;
   }
 }
 
 .secondary.ewc--dark {
-  background-color: $background-dark;
-  border-color: $font-dark;
-  color: $font-dark;
+  background-color: $dark;
+  border-color: $light-violett;
+  color: $light-violett;
 
   &:hover {
-    background-color: $background-light;
-    color: $font-light;
+    background-color: $light;
+    color: $violett;
   }
 }
 
 .transparent.ewc--light {
   background-color: transparent;
-  border-color: $font-light;
-  color: $font-light;
+  border-color: $violett;
+  color: $violett;
 
   &:hover {
     border-color: transparent;
@@ -122,8 +122,8 @@
 
 .transparent.ewc--dark {
   background-color: transparent;
-  border-color: $font-dark;
-  color: $font-dark;
+  border-color: $light-violett;
+  color: $light-violett;
 
   &:hover {
     border-color: transparent;

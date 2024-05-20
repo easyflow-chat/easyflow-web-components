@@ -27,7 +27,7 @@
 
 .circle {
   animation: dash 1.5s ease-in-out infinite;
-  stroke: $font-light;
+  stroke: $violett;
 }
 
 .stroke-inherit {
@@ -35,7 +35,7 @@
 }
 
 .circle.ewc--dark {
-  stroke: $font-dark;
+  stroke: $light-violett;
 }
 
 .stroke-inherit.ewc--dark {
