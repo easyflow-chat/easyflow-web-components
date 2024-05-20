@@ -31,12 +31,14 @@
     "precommit": "npm run prettify && lint-staged --no-stash",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss}\""
   },
-  "devDependencies": {
+  "dependencies": {
     "@stencil/core": "4.7.0",
     "@stencil-community/postcss": "2.2.0",
     "@stencil/sass": "3.0.12",
+    "autoprefixer": "10.4.19"
+  },
+  "devDependencies": {
     "@types/node": "16.18.11",
-    "autoprefixer": "10.4.19",
     "eslint": "9.3.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-plugin-prettier": "5.1.3",
