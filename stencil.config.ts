@@ -5,9 +5,9 @@ import autoprefixer from 'autoprefixer';
 
 export const config: Config = {
   namespace: 'easyflow-web-components',
+  globalStyle: 'src/styles/export.scss',
   validatePrimaryPackageOutputTarget: true,
   validateTypes: true,
-  globalStyle: 'src/components/globals/scss/global-export.scss',
   outputTargets: [
     {
       type: 'dist',
