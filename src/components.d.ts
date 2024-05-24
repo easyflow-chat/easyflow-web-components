@@ -36,6 +36,9 @@ export namespace Components {
          */
         "type": 'button' | 'submit' | 'reset';
     }
+    interface EwcButtonGroup {
+        "layout": 'responsive' | 'fill' | 'responsive-reverse' | 'fullwidth';
+    }
     interface EwcLoader {
         /**
           * The size of the loader
@@ -58,6 +61,12 @@ declare global {
         prototype: HTMLEwcButtonElement;
         new (): HTMLEwcButtonElement;
     };
+    interface HTMLEwcButtonGroupElement extends Components.EwcButtonGroup, HTMLStencilElement {
+    }
+    var HTMLEwcButtonGroupElement: {
+        prototype: HTMLEwcButtonGroupElement;
+        new (): HTMLEwcButtonGroupElement;
+    };
     interface HTMLEwcLoaderElement extends Components.EwcLoader, HTMLStencilElement {
     }
     var HTMLEwcLoaderElement: {
@@ -66,6 +75,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "ewc-button": HTMLEwcButtonElement;
+        "ewc-button-group": HTMLEwcButtonGroupElement;
         "ewc-loader": HTMLEwcLoaderElement;
     }
 }
@@ -96,6 +106,9 @@ declare namespace LocalJSX {
          */
         "type"?: 'button' | 'submit' | 'reset';
     }
+    interface EwcButtonGroup {
+        "layout"?: 'responsive' | 'fill' | 'responsive-reverse' | 'fullwidth';
+    }
     interface EwcLoader {
         /**
           * The size of the loader
@@ -112,6 +125,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "ewc-button": EwcButton;
+        "ewc-button-group": EwcButtonGroup;
         "ewc-loader": EwcLoader;
     }
 }
@@ -120,6 +134,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "ewc-button": LocalJSX.EwcButton & JSXBase.HTMLAttributes<HTMLEwcButtonElement>;
+            "ewc-button-group": LocalJSX.EwcButtonGroup & JSXBase.HTMLAttributes<HTMLEwcButtonGroupElement>;
             "ewc-loader": LocalJSX.EwcLoader & JSXBase.HTMLAttributes<HTMLEwcLoaderElement>;
         }
     }

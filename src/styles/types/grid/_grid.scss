@@ -1,0 +1,150 @@
+@use "sass:math";
+
+@import "../../mixins/mixins";
+
+//
+// Grid
+// --------------------------------------------------
+
+// This Grid is based on the Bootstrap Grid.
+// Credit: Bootstrap
+// --------------------------------------------------
+
+// Custom styles for additional flex alignment options.
+
+@each $bp in map-keys($grid-breakpoints) {
+  @include media-breakpoint-up($bp) {
+    // Flex column reordering
+    .flex-#{$bp}-first {
+      order: -1;
+    }
+    .flex-#{$bp}-last {
+      order: 1;
+    }
+    .flex-#{$bp}-unordered {
+      order: 0;
+    }
+
+    // Alignment for every item
+    .flex-items-#{$bp}-top {
+      align-items: flex-start;
+    }
+    .flex-items-#{$bp}-middle {
+      align-items: center;
+    }
+    .flex-items-#{$bp}-bottom {
+      align-items: flex-end;
+    }
+
+    // Alignment per item
+    .flex-#{$bp}-top {
+      align-self: flex-start;
+    }
+    .flex-#{$bp}-middle {
+      align-self: center;
+    }
+    .flex-#{$bp}-bottom {
+      align-self: flex-end;
+    }
+
+    // Horizontal alignment of item
+    .flex-items-#{$bp}-left {
+      justify-content: flex-start;
+    }
+    .flex-items-#{$bp}-center {
+      justify-content: center;
+    }
+    .flex-items-#{$bp}-right {
+      justify-content: flex-end;
+    }
+    .flex-items-#{$bp}-around {
+      justify-content: space-around;
+    }
+    .flex-items-#{$bp}-between {
+      justify-content: space-between;
+    }
+  }
+}
+
+// --------------------------------------------------
+
+// Container widths
+//
+// Set the container width.
+
+.container {
+  @include make-container-fluid(xs);
+
+  @include make-container-fixed(sm);
+  @include make-container-fixed(md);
+  @include make-container-fixed(lg);
+  @include make-container-fixed(xl);
+  @include make-container-fixed(ul);
+}
+
+.container-fluid {
+  @include make-container-fluid(xs);
+}
+
+.container-page {
+  @include make-container-fluid(xs);
+
+  @include make-container-fixed(ul);
+}
+
+// --------------------------------------------------
+
+// Row
+//
+// Rows contain and clear the floats of your columns.
+
+.row {
+  @include make-row();
+}
+
+.row--gutters {
+  @each $bp in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($bp, $grid-breakpoints) {
+      $gutter: map-get($grid-gutters, $bp);
+      $padding: math.div($gutter, 2);
+
+      // Remove first and last .col's padding using negative margins
+      margin-top: -$padding;
+      margin-bottom: -$padding;
+
+      // Add gutters between rows
+      & + .row--gutters {
+        padding-top: $padding;
+      }
+
+      // Add gutters between cols
+      .col,
+      [class*="col-"] {
+        padding-top: $padding;
+        padding-bottom: $padding;
+      }
+    }
+  }
+}
+
+// Remove the negative margin from default .row, then the horizontal padding
+// from all immediate children columns (to prevent runaway style inheritance).
+.row--no-gutters,
+.no-gutters /* deprecated selector because it's not named after BEM */ {
+  margin-right: 0;
+  margin-left: 0;
+
+  > .col,
+  > [class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+
+// --------------------------------------------------
+
+// Columns
+//
+// Common styles for small and large grid columns.
+
+@include make-grid-columns();

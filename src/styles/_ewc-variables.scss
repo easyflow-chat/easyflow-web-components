@@ -1,6 +1,14 @@
+@import 'types/variables';
 @import '../components/globals/scss/variables';
 
 :root {
+
+  //breakpoints
+  @each $bp in map-keys($grid-breakpoints) {
+    --sdx-grid-breakpoint-#{$bp}: #{map-get($grid-breakpoints, $bp)};
+  }
+
+  //colors
   --ewc-black: #{$black};
   --ewc-rich-black: #{$rich-black};
   --ewc-oxford-blue: #{$oxford-blue};

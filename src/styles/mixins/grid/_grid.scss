@@ -1,0 +1,187 @@
+@use "sass:math";
+
+//
+// Grid Mixins
+// --------------------------------------------------
+
+// This Grid is based on the Bootstrap Grid.
+// Credit: Bootstrap
+
+// --------------------------------------------------
+
+// Container Generator
+// -------------------------
+
+@mixin make-container-fluid(
+  $name,
+  $gutters: $grid-gutters,
+  $bps: $grid-breakpoints
+) {
+  @include media-breakpoint-up($name, $bps) {
+    $gutter: map-get($gutters, $name);
+
+    @if ($gutter != null) {
+      $padding: math.div($gutter, 2);
+      $margin-width: calc(#{$container-margin-width} - #{$padding});
+
+      margin-left: $margin-width;
+      margin-right: $margin-width;
+
+      padding-left: $padding;
+      padding-right: $padding;
+
+      width: auto;
+    }
+  }
+}
+
+// Fixed Container Generator
+// -------------------------
+
+@mixin make-container-fixed(
+  $name,
+  $gutters: $grid-gutters,
+  $widths: $container-widths,
+  $bps: $grid-breakpoints
+) {
+  @include media-breakpoint-up($name, $bps) {
+    $width: map-get($widths, $name);
+    $gutter: map-get($gutters, $name);
+
+    margin-left: auto;
+    margin-right: auto;
+
+    @if ($width != null) and ($gutter != null) {
+      padding-left: math.div($gutter, 2);
+      padding-right: math.div($gutter, 2);
+
+      width: $width + $gutter;
+    }
+  }
+}
+
+// Row Generator
+// -------------------------
+
+// Creates a wrapper for a series of columns
+@mixin make-row($gutters: $grid-gutters, $bps: $grid-breakpoints) {
+  display: flex;
+  flex-wrap: wrap;
+
+  @each $bp, $gutter in $gutters {
+    @include media-breakpoint-up($bp, $bps) {
+      margin-left: -(math.div($gutter, 2));
+      margin-right: -(math.div($gutter, 2));
+    }
+  }
+}
+
+// Columns Generator
+// -------------------------
+
+@mixin make-col($size, $columns: $grid-columns) {
+  flex: 0 0 percentage(math.div($size, $columns));
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage(math.div($size, $columns));
+}
+
+// Columns Modifier
+// --------------------------------------------------
+
+@mixin make-col-offset($size, $columns: $grid-columns) {
+  margin-left: percentage(math.div($size, $columns));
+}
+
+@mixin make-col-push($size, $columns: $grid-columns) {
+  left: if($size > 0, percentage(math.div($size, $columns)), auto);
+}
+
+@mixin make-col-pull($size, $columns: $grid-columns) {
+  right: if($size > 0, percentage(math.div($size, $columns)), auto);
+}
+
+@mixin make-col-modifier($type, $size, $columns) {
+  // Work around the lack of dynamic mixin @include support (https://github.com/sass/sass/issues/626)
+  @if $type == push {
+    @include make-col-push($size, $columns);
+  } @else if $type == pull {
+    @include make-col-pull($size, $columns);
+  } @else if $type == offset {
+    @include make-col-offset($size, $columns);
+  }
+}
+
+// SDX Grid Columns Generator
+// --------------------------------------------------
+
+// Used by the grid system to generate the correct number of grid classes given any value of `$grid-columns`.
+@mixin make-grid-columns(
+  $grid-columns: $grid-columns,
+  $grid-gutters: $grid-gutters,
+  $grid-breakpoints: $grid-breakpoints
+) {
+  .col,
+  [class*="col-"] {
+    position: relative;
+    // Prevent columns from becoming too narrow when at smaller grid tiers by
+    // always setting `width: 100%;`. This works because we use `flex` values
+    // later on to override this initial width.
+    width: 100%;
+    min-height: 1px; // Prevent collapsing
+  }
+
+  $bp-counter: 0;
+
+  @each $bp in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($bp, $grid-breakpoints) {
+      $gutter: map-get($grid-gutters, $bp);
+      $padding: 0;
+
+      @if ($gutter != null) {
+        $padding: math.div($gutter, 2);
+      }
+
+      .col,
+      [class*="col-"] {
+        // Inner gutter via padding
+        padding-left: $padding;
+        padding-right: $padding;
+      }
+
+      // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+      .col-#{$bp} {
+        flex-grow: 1;
+        flex-basis: 0;
+        max-width: 100%;
+      }
+
+      .col-#{$bp}-auto {
+        flex: 0 0 auto;
+        width: auto;
+      }
+
+      @for $i from 1 through $grid-columns {
+        .col-#{$bp}-#{$i} {
+          @include make-col($i, $grid-columns);
+        }
+      }
+
+      @each $modifier in (pull, push) {
+        @for $i from 0 through $grid-columns {
+          .#{$modifier}-#{$bp}-#{$i} {
+            @include make-col-modifier($modifier, $i, $grid-columns);
+          }
+        }
+      }
+
+      // `$columns - 1` because offsetting by the width of an entire row isn't possible
+      @for $i from 0 through ($grid-columns - 1) {
+        .offset-#{$bp}-#{$i} {
+          @include make-col-modifier(offset, $i, $grid-columns);
+        }
+      }
+    }
+  }
+}

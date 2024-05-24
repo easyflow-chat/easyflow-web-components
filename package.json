@@ -7,12 +7,14 @@
   "module": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "build": "stencil build && npm run sass:compress",
+    "build": "stencil build && npm run sass:compress && npm run copy:assets",
     "start": "stencil build --dev --watch --serve",
     "generate": "stencil generate",
     "precommit": "npm run prettify && lint-staged --no-stash",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss}\"",
-    "sass:compress": "sass src/styles/export.scss:dist/css/styles.css --no-source-map --style compressed"
+    "sass:compress": "sass src/styles/export.scss:dist/css/styles.css --no-source-map --style compressed",
+    "copy:assets": "cp -r public dist/public"
+
   },
   "dependencies": {
     "@stencil-community/postcss": "2.2.0",

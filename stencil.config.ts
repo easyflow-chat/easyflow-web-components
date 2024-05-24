@@ -12,6 +12,7 @@ export const config: Config = {
       type: 'dist',
       esmLoaderPath: '../loader',
       isPrimaryPackageOutputTarget: true,
+      empty: false,
     },
     {
       type: 'docs-readme',

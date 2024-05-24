@@ -3,3 +3,13 @@
 
 // webcomponents
 @import '../components/globals/scss/webcomponents';
+
+// normalize
+@import 'normalize/normalize';
+
+// mixins
+@import 'mixins/mixins';
+
+// types
+@import 'types/types';
+@import 'types/variables'

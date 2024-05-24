@@ -1,0 +1,118 @@
+//
+// Breakpoint Mixins
+// --------------------------------------------------
+
+// This Grid is based on the Bootstrap Grid.
+// Credit: Bootstrap
+
+// --------------------------------------------------
+
+// Breakpoint viewport sizes and media queries.
+//
+// Breakpoints are defined as a map of (name: minimum width), order from small to large:
+//
+//    (xs: 0, sm: 544px, md: 768px)
+//
+// The map defined in the `$grid-breakpoints` global variable is used as the `$breakpoints` argument by default.
+
+// Name of the next breakpoint, or null for the last breakpoint.
+//
+//    >> breakpoint-next(sm)
+//    md
+//    >> breakpoint-next(sm, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
+//    md
+//    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl ul))
+//    md
+@function breakpoint-next(
+  $name,
+  $bps: $grid-breakpoints,
+  $breakpoint-names: map-keys($bps)
+) {
+  $n: index($breakpoint-names, $name);
+  @return if(
+    $n < length($breakpoint-names),
+    nth($breakpoint-names, $n + 1),
+    null
+  );
+}
+
+// Minimum breakpoint width. Null for the smallest (first) breakpoint.
+//
+//    >> breakpoint-min(sm, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
+//    480px
+@function breakpoint-min($name, $bps: $grid-breakpoints) {
+  $min: map-get($bps, $name);
+  @return if($min != null, $min, null);
+}
+
+// Maximum breakpoint width. Null for the largest (last) breakpoint.
+// The maximum value is calculated as the minimum of the next one less 1px.
+//
+//    >> breakpoint-max(sm, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
+//    767px
+@function breakpoint-max($name, $bps: $grid-breakpoints) {
+  $next: breakpoint-next($name, $bps);
+  @return if($next, breakpoint-min($next, $bps) - 1px, null);
+}
+
+// Returns a blank string if smallest breakpoint, otherwise returns the name with a dash infront.
+// Useful for making responsive utilities.
+//
+//    >> breakpoint-infix(xs, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
+//    ""  (Returns a blank string)
+//    >> breakpoint-infix(sm, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
+//    "-sm"
+@function breakpoint-infix($name, $bps: $grid-breakpoints) {
+  @return if(breakpoint-min($name, $bps) == null, "", "-#{$name}");
+}
+
+// --------------------------------------------------
+
+// Media of at least the minimum breakpoint width. No query for the smallest breakpoint.
+// Makes the @content apply to the given breakpoint and wider.
+@mixin media-breakpoint-up($name, $bps: $grid-breakpoints) {
+  $min: breakpoint-min($name, $bps);
+  @if $min {
+    @media (min-width: $min) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// Media of at most the maximum breakpoint width. No query for the largest breakpoint.
+// Makes the @content apply to the given breakpoint and narrower.
+@mixin media-breakpoint-down($name, $bps: $grid-breakpoints) {
+  $max: breakpoint-max($name, $bps);
+  @if $max {
+    @media (max-width: $max) {
+      @content;
+    }
+  } @else {
+    @content;
+  }
+}
+
+// --------------------------------------------------
+
+// Media between the breakpoint's minimum and maximum widths.
+// No minimum for the smallest breakpoint, and no maximum for the largest one.
+// Makes the @content apply only to the given breakpoint, not viewports any wider or narrower.
+@mixin media-breakpoint-only($name, $bps: $grid-breakpoints) {
+  @include media-breakpoint-up($name, $bps) {
+    @include media-breakpoint-down($name, $bps) {
+      @content;
+    }
+  }
+}
+
+// Media that spans multiple breakpoint widths.
+// Makes the @content apply between the min and max breakpoints
+@mixin media-breakpoint-between($lower, $upper, $bps: $grid-breakpoints) {
+  @include media-breakpoint-up($lower, $bps) {
+    @include media-breakpoint-down($upper, $bps) {
+      @content;
+    }
+  }
+}
