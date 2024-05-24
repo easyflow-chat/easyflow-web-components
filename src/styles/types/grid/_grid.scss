@@ -1,6 +1,6 @@
-@use "sass:math";
+@use 'sass:math';
 
-@import "../../mixins/mixins";
+@import '../../mixins/mixins';
 
 //
 // Grid
@@ -119,7 +119,7 @@
 
       // Add gutters between cols
       .col,
-      [class*="col-"] {
+      [class*='col-'] {
         padding-top: $padding;
         padding-bottom: $padding;
       }
@@ -135,7 +135,7 @@
   margin-left: 0;
 
   > .col,
-  > [class*="col-"] {
+  > [class*='col-'] {
     padding-right: 0;
     padding-left: 0;
   }

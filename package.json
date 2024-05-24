@@ -1,6 +1,6 @@
 {
   "name": "@dragon437619/easyflow-web-components",
-  "version": "0.0.9-alpha",
+  "version": "0.0.10-alpha",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
   "collection": "dist/collection/collection-manifest.json",
@@ -14,7 +14,6 @@
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss}\"",
     "sass:compress": "sass src/styles/export.scss:dist/css/styles.css --no-source-map --style compressed",
     "copy:assets": "cp -r public dist/public"
-
   },
   "dependencies": {
     "@stencil-community/postcss": "2.2.0",

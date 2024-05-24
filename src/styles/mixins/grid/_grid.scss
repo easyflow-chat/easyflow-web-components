@@ -1,4 +1,4 @@
-@use "sass:math";
+@use 'sass:math';
 
 //
 // Grid Mixins
@@ -12,11 +12,7 @@
 // Container Generator
 // -------------------------
 
-@mixin make-container-fluid(
-  $name,
-  $gutters: $grid-gutters,
-  $bps: $grid-breakpoints
-) {
+@mixin make-container-fluid($name, $gutters: $grid-gutters, $bps: $grid-breakpoints) {
   @include media-breakpoint-up($name, $bps) {
     $gutter: map-get($gutters, $name);
 
@@ -38,12 +34,7 @@
 // Fixed Container Generator
 // -------------------------
 
-@mixin make-container-fixed(
-  $name,
-  $gutters: $grid-gutters,
-  $widths: $container-widths,
-  $bps: $grid-breakpoints
-) {
+@mixin make-container-fixed($name, $gutters: $grid-gutters, $widths: $container-widths, $bps: $grid-breakpoints) {
   @include media-breakpoint-up($name, $bps) {
     $width: map-get($widths, $name);
     $gutter: map-get($gutters, $name);
@@ -123,7 +114,7 @@
   $grid-breakpoints: $grid-breakpoints
 ) {
   .col,
-  [class*="col-"] {
+  [class*='col-'] {
     position: relative;
     // Prevent columns from becoming too narrow when at smaller grid tiers by
     // always setting `width: 100%;`. This works because we use `flex` values
@@ -144,7 +135,7 @@
       }
 
       .col,
-      [class*="col-"] {
+      [class*='col-'] {
         // Inner gutter via padding
         padding-left: $padding;
         padding-right: $padding;

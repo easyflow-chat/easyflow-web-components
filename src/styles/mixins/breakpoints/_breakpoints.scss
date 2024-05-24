@@ -23,17 +23,9 @@
 //    md
 //    >> breakpoint-next(sm, $breakpoint-names: (xs sm md lg xl ul))
 //    md
-@function breakpoint-next(
-  $name,
-  $bps: $grid-breakpoints,
-  $breakpoint-names: map-keys($bps)
-) {
+@function breakpoint-next($name, $bps: $grid-breakpoints, $breakpoint-names: map-keys($bps)) {
   $n: index($breakpoint-names, $name);
-  @return if(
-    $n < length($breakpoint-names),
-    nth($breakpoint-names, $n + 1),
-    null
-  );
+  @return if($n < length($breakpoint-names), nth($breakpoint-names, $n + 1), null);
 }
 
 // Minimum breakpoint width. Null for the smallest (first) breakpoint.
@@ -63,7 +55,7 @@
 //    >> breakpoint-infix(sm, (xs: 0, sm: 480px, md: 768px, lg: 1024px, xl: 1280px, ul: 1440px))
 //    "-sm"
 @function breakpoint-infix($name, $bps: $grid-breakpoints) {
-  @return if(breakpoint-min($name, $bps) == null, "", "-#{$name}");
+  @return if(breakpoint-min($name, $bps) == null, '', '-#{$name}');
 }
 
 // --------------------------------------------------

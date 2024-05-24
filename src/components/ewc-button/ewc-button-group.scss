@@ -1,7 +1,6 @@
 @mixin fill-behavior {
   width: 100%;
   min-width: 0;
-
 }
 
 :host {
@@ -12,7 +11,7 @@
   }
 
   ::slotted(sdx-button) {
-    @media(max-width: 768px){
+    @media (max-width: 768px) {
       width: 100%;
     }
   }
@@ -23,7 +22,7 @@
 
   .fill {
     flex-wrap: nowrap;
-  } 
+  }
 }
 :host(.fill) {
   ::slotted(sdx-button) {
@@ -34,7 +33,7 @@
 :host(.responsive-fill) {
   ::slotted(sdx-button) {
     //@include bp-sm {
-      @include fill-behavior;
+    @include fill-behavior;
     //}
   }
 }

@@ -1,9 +1,9 @@
 /*! normalize-scss | MIT/GPLv2 License | bit.ly/normalize-scss */
 
-@use "sass:math";
+@use 'sass:math';
 
-@import "variables";
-@import "vertical-rythm";
+@import 'variables';
+@import 'vertical-rythm';
 
 // If we've customized any font variables, we'll need extra properties.
 @if $base-font-size !=
@@ -11,7 +11,7 @@
   $base-line-height !=
   24px or
   $base-unit !=
-  "em" or
+  'em' or
   $h1-font-size !=
   2 *
   $base-font-size or
@@ -420,9 +420,9 @@ html [type="button"], /* 1 */
 }
 
 button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
+[type='button'],
+[type='reset'],
+[type='submit'] {
   /**
    * Remove the inner border and padding in Firefox.
    */
@@ -454,8 +454,8 @@ input {
  * 2. Remove the padding in IE 10-.
  */
 
-input[type="checkbox"],
-input[type="radio"] {
+input[type='checkbox'],
+input[type='radio'] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -464,8 +464,8 @@ input[type="radio"] {
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
 
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -474,7 +474,7 @@ input[type="number"]::-webkit-outer-spin-button {
  * 2. Correct the outline style in Safari.
  */
 
-input[type="search"] {
+input[type='search'] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 
@@ -493,7 +493,7 @@ input[type="search"] {
  * 2. Change font properties to `inherit` in Safari.
  */
 
-input[type="file"]::-webkit-file-upload-button {
+input[type='file']::-webkit-file-upload-button {
   -webkit-appearance: button; /* 1 */
   font: inherit; /* 2 */
 }

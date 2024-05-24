@@ -2,7 +2,6 @@
 @import '../components/globals/scss/variables';
 
 :root {
-
   //breakpoints
   @each $bp in map-keys($grid-breakpoints) {
     --sdx-grid-breakpoint-#{$bp}: #{map-get($grid-breakpoints, $bp)};
