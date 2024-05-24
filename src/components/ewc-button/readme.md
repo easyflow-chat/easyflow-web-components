@@ -9,7 +9,7 @@
 
 | Property | Attribute | Description | Type                                                            | Default        |
 | -------- | --------- | ----------- | --------------------------------------------------------------- | -------------- |
-| `layout` | `layout`  |             | `"fill" \| "fullwidth" \| "responsive" \| "responsive-reverse"` | `"responsive"` |
+| `layout` | `layout`  |             | `"fill" \| "fullwidth" \| "responsive" \| "responsive-reverse"` | `'responsive'` |
 
 
 ----------------------------------------------

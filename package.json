@@ -13,7 +13,7 @@
     "precommit": "npm run prettify && lint-staged --no-stash",
     "prettify": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,scss}\"",
     "sass:compress": "sass src/styles/export.scss:dist/css/styles.css --no-source-map --style compressed",
-    "copy:assets": "cp -r public dist/public"
+    "copy:assets": "cp -r src/assets dist/assets"
   },
   "dependencies": {
     "@stencil-community/postcss": "2.2.0",
