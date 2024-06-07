@@ -1,6 +1,6 @@
 {
   "name": "@easyflow-chat/easyflow-web-components",
-  "version": "0.0.10-alpha",
+  "version": "0.0.11-alpha",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
   "collection": "dist/collection/collection-manifest.json",
