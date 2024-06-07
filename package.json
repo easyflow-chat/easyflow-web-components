@@ -1,5 +1,5 @@
 {
-  "name": "@dragon437619/easyflow-web-components",
+  "name": "@easyflow-chat/easyflow-web-components",
   "version": "0.0.10-alpha",
   "description": "Easyflow web components",
   "main": "dist/index.cjs.js",
@@ -35,7 +35,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Dragon437619/easyflow-web-components.git"
+    "url": "git+https://github.com/esyflow-chat/easyflow-web-components.git"
   },
   "style": "dist/css/styles.css",
   "files": [
